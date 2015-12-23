@@ -16,13 +16,13 @@ def send_email(recipient, imgDir, extension = ".jpg"):
     msg_text = MIMEText('From josh with love :D')
     msg.attach(msg_text)
 
-    # send all jpg files in dir as attachments
-    for img in [f for f in os.listdir(imgDir) if f.endswith(extension)]:
-        with open(imgDir+img, 'rb') as file:
-            msg_image = MIMEImage(file.read(), name='image',  _subtype="jpeg")
-            msg.attach(msg_image)
-        # throw away jpgs so as not to clutter
-        os.remove(imgDir+img)
+    # # send all jpg files in dir as attachments
+    # for img in [f for f in os.listdir(imgDir) if f.endswith(extension)]:
+    #     with open(imgDir+img, 'rb') as file:
+    #         msg_image = MIMEImage(file.read(), name='image',  _subtype="jpeg")
+    #         msg.attach(msg_image)
+    #     # throw away jpgs so as not to clutter
+    #     #os.remove(imgDir+img)
         
     try:
         server = smtplib.SMTP("smtp.gmail.com", 587)
